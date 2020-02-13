@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -7,7 +8,12 @@
   <meta name="description" content="20200214情人节"/>
   <meta name="keywords" content=""/>
   <link type="text/css" rel="stylesheet" href="css/qrj.css" />
-
+  <style type="text/css">
+    @font-face {
+      font-family: digit;
+      src: url('digital-7_mono.ttf') format("truetype");
+    }
+  </style>
 </head>
 <body bgcolor="#FFD1D6">
   <center>
@@ -33,48 +39,66 @@
     <script src="js/jquery.min.js"></script>
     <!--animation.js-->
     <script src="js/qrj.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+
     <!--倒计时-->
     <script type="text/javascript">
-      var offsetX = $("#loveHeart").width() / 2;
-      var offsetY = $("#loveHeart").height() / 2 - 55;
-      var together = new Date();
-      together.setFullYear(2013, 2, 28);
-      together.setHours(20);
-      together.setMinutes(0);
-      together.setSeconds(0);
-      together.setMilliseconds(0);
+         var offsetX = 10;
+    var offsetY = 10;
+    var together = new Date();
+    together.setFullYear(2020, 1, -27);
+    together.setHours(16);
+    together.setMinutes(0);
+    together.setSeconds(0);
+    together.setMilliseconds(0);
+    
+    timeElapse(together);
+    setInterval(function () {
+      timeElapse(together);
+    }, 500);
 
-      if (!document.createElement('canvas').getContext) {
-        var msg = document.createElement("div");
-        msg.id = "errorMsg";
-        msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-        document.body.appendChild(msg);
-        $("#code").css("display", "none")
-        $("#copyright").css("position", "absolute");
-        $("#copyright").css("bottom", "10px");
-        document.execCommand("stop");
-      } else {
-        setTimeout(function () {
-          startHeartAnimation();
-        }, 5000);
+      function timeElapse(date){
+  var current = Date();
+  var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+  var days = Math.floor(seconds / (3600 * 24));
+  seconds = seconds % (3600 * 24);
+  var hours = Math.floor(seconds / 3600);
+  if (hours < 10) {
+    hours = "0" + hours;
+  }
+  seconds = seconds % 3600;
+  var minutes = Math.floor(seconds / 60);
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  seconds = seconds % 60;
+  if (seconds < 10) {
+    seconds = "0" + seconds;
+  }
+  var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+  $("#elapseClock").html(result);
+}
 
-        timeElapse(together);
-        setInterval(function () {
-          timeElapse(together);
-        }, 500);
-
-        adjustCodePosition();
-        $("#code").typewriter();
-      }
     </script>
-
-
-  </center>
-  <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">  
-    <video controls muted autoplay="autoplay" loop="loop">
-      <source src="./2020214.MOV">
-        您的浏览器不支持 video 标签。
+    <div id="words">
+          <div id="messages">
+                    YiTong,与你相识已有：
+            <div id="elapseClock"></div>
+          </div>
+          <div id="loveu">
+            <div class="signature">--情人节快乐!!!!</div>
+          </div>
+        </div>
+    <video width="100%" height="100%" controls autoplay="autoplay" loop="loop">
+      <source src="http://110.185.107.36:9040/oss/downloadFile?fileKey=8763D420-361A-42BE-AD3C-E94F125A6812.mp4&fileName=QQ视频20200213215045.mp4&dir=task" type="video/mp4">
       </video>
-    </div>
+  </center>
+<!--   <p id="elapseClock"></p>
+ -->  
+
+ 
   </body>
   </html>
+
+
+

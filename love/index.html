@@ -8,6 +8,7 @@
   <meta name="description" content="20200214情人节"/>
   <meta name="keywords" content=""/>
   <link type="text/css" rel="stylesheet" href="css/qrj.css" />
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"> </script>
   <style type="text/css">
     @font-face {
       font-family: digit;
@@ -79,6 +80,21 @@
   $("#elapseClock").html(result);
 }
 
+
+   wx.config({
+        // 配置信息, 即使不正确也能使用 wx.ready
+        debug: false,
+        appId: 'gh_1a8c118653f8',
+        timestamp: 1,
+        nonceStr: '',
+        signature: '',
+        jsApiList: []
+    });
+    wx.ready(function() {
+        $("#video")[0].play();
+    });
+
+    
     
     </script>
     <div id="words">

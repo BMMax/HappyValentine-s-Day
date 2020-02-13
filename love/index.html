@@ -94,7 +94,17 @@
         $("#video")[0].play();
     });
 
+    jQuery(document).ready(function() {
+  // Attach event handler 
+  $('video').on('click', function(event) {
+    event.preventDefault();
+    $('video')[0].play();
+  });
 
+  // Trigger click event
+  $('video').trigger('click');
+
+});
     
     </script>
     <div id="words">
